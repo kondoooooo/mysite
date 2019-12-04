@@ -14,3 +14,6 @@ class Post ( models.Model ):
     published = models.DateTimeField ()  # 記事が投稿された日
     image = models.ImageField ( upload_to='media/' )  # 画像データを保存する先
     body = models.TextField ()  # 本文 テキスト型 長めの文章
+
+    def __str__(self):
+        return self.title
