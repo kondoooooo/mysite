@@ -29,7 +29,7 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
+# 設定ファイル
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'posts.apps.PostsConfig',
+    'posts.apps.PostsConfig',  # apps.pyのclass PostsConfig(AppConfig):と連動
 ]
 
 MIDDLEWARE = [
@@ -105,10 +105,10 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
 # LANGUAGE_CODE = 'en-us'
-LANGUAGE_CODE = 'ja'
+LANGUAGE_CODE = 'ja'  # 言語を日本語にする
 
 # TIME_ZONE = 'UTC'
-TIME_ZONE = 'Asia/Tokyo'
+TIME_ZONE = 'Asia/Tokyo'  # 時間を日本にする
 
 USE_I18N = True
 

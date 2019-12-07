@@ -7,8 +7,8 @@ DBのデータを一つの変数として扱えるようなclassを定義
 """
 
 
-# Create your models here.
 # 属性を宣言
+# データと命令をセットで扱う
 class Post ( models.Model ):
     title = models.CharField ( max_length=100 )  # タイトル 文字列型CharField 文字数
     published = models.DateTimeField ()  # 記事が投稿された日
@@ -18,5 +18,7 @@ class Post ( models.Model ):
     def __str__(self):
         return self.title
 
+    # index.htmlの{{post.summary}}と連動
+    # 本文の文字数制限100文字
     def summary(self):
-        return self.body[:30]
+        return self.body[:100]

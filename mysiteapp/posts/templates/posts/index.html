@@ -1,3 +1,7 @@
+<!--
+ホーム画面ページを扱うhtml
+views.pyの関数 def index(request):と連動
+-->
 <!DOCTYPE html>
 <html lang = "ja-jp">
 <head>
@@ -18,7 +22,8 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <!-- div(四角形領域) --><!-- href(リンク) -->
+  <!-- div(四角形領域) -->
+  <!-- a(リンク貼付け) href(URL入力) -->
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
@@ -50,7 +55,7 @@
     <!-- %で囲うとテンプレートエンジン機能 -->
     {% for post in posts.all %}  <!-- 全ての値を取り出す -->
 
-      <!-- titleを出力(<a>でリンク貼付け)-->
+      <!-- titleを出力 -->
       <a href = "{% url 'post_detail' post.id %}">{{ post.title }}</a>
       <!-- br 改行-->
       <br /><br />
@@ -64,6 +69,7 @@
       -->
       <img src="{{ post.image.url }}" class = "img-fluid rounded" style="max-height: 200px;" />
       <br /><br />
+      <!-- models.pyの関数summaryと連動 -->
       {{post.summary}}
       <br /><br />
 

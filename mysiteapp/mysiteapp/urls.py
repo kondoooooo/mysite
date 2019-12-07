@@ -20,7 +20,8 @@ from django.conf import settings
 from posts import views
 
 urlpatterns = [
-    path ( 'posts/', include ( 'posts.urls' ) ),  # postsにあるurlsを呼び出す
+    path ( 'posts/', include ( 'posts.urls' ) ),  # posts/urls.pyを呼び出す
     path ( 'admin/', admin.site.urls ),
-    path('posts/<int:post_id>/', views.post_detail, name= 'post_detail'),  # nameでhtmlのリンクを連動
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  # settings.pyのMEDIA_URLとMEDIA_ROOTの追加
+    path ( 'posts/<int:post_id>/', views.post_detail, name='post_detail' ),  # nameでhtmlのリンクを連動
+              ] + static ( settings.MEDIA_URL,
+                           document_root=settings.MEDIA_ROOT )  # settings.pyのMEDIA_URLとMEDIA_ROOTの追加
