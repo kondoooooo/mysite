@@ -2,12 +2,13 @@
 <html lang = "ja-jp">
 <head>
     <title>投稿一覧</title>
-    <!-- Bootstrap -->
+    <!-- Bootstrap(Starter template)<head>部分 -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
+
 <!-- Bootstrap(Navbar & Serch) -->
 <body>
     <!-- 配色の変更 -->
@@ -17,66 +18,59 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <!-- div(四角形領域) -->
+  <!-- div(四角形領域) --><!-- href(リンク) -->
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link" href="https://qiita.com/nuhsodnok">近藤のQiita</a>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-      </li>
+
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+
   </div>
 </nav>
 
 <!-- container(画面パーツのタイプ) -->
 <div class="container">
-    <!-- <h1>ハローこんにちはブログ</h1> -->
+    <!-- text-center(文字をセンターに持ってくる) -->
+    <h1 class="text-center">ハローこんにちはブログ</h1>
+    <br /><br />
+    <!-- staticディレクトリを読み込む -->
+    {% load static %}
+    <!-- postsに保存してある画像の読み込み -->
+    <img src="{% static 'posts/gate2.jpg' %}" class = "img-fluid rounded" style="max-height: 200px;" />
 
-    <h2>最新の投稿</h2>
+    <!-- hr(ラインを入れる) -->
+    <hr>
+    <h3>最新の投稿</h3>
 
-<!-- %で囲うとテンプレートエンジン機能 -->
+    <!-- %で囲うとテンプレートエンジン機能 -->
     {% for post in posts.all %}  <!-- 全ての値を取り出す -->
 
       <!-- titleを出力(<a>でリンク貼付け)-->
       <a href = "{% url 'post_detail' post.id %}">{{ post.title }}</a>
+      <!-- br 改行-->
       <br /><br />
       {{ post.published }}
       <br /><br />
       <!--
-      Bootstrap(img-fluid)
-      画面の大きさに合わせて、画像を拡大縮小する
-      Bootstrap(rounded)
-      画像の角を丸くする
-      classにスペースを入れる
-      複数入れられる
+      Bootstrap(img-fluid)画面の大きさに合わせて、画像を拡大縮小する
+      Bootstrap(rounded)画像の角を丸くする
+      ※classにスペースを入れることで複数入れられる
+      style 画像の加工
       -->
-      <img src="{{ post.image.url }}" class = "img-fluid rounded" />
+      <img src="{{ post.image.url }}" class = "img-fluid rounded" style="max-height: 200px;" />
+      <br /><br />
       {{post.summary}}
       <br /><br />
 
     <!-- for文修了処理 -->
     {% endfor %}
 
+    <!-- Bootstrap(Starter template)<body>JavaScript部分 -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
