@@ -46,7 +46,8 @@ views.pyの関数 def index(request):と連動
     <!-- staticディレクトリを読み込む -->
     {% load static %}
     <!-- postsに保存してある画像の読み込み -->
-    <img src="{% static 'posts/gate2.jpg' %}" class = "img-fluid rounded" style="max-height: 200px;" />
+    <!-- Bootstrap(mx-auto d-block)imgの中央揃え -->
+    <img src="{% static 'posts/gate2.jpg' %}" class = "img-fluid rounded mx-auto d-block" style="max-height: 200px;" />
 
     <!-- hr(ラインを入れる) -->
     <hr>
